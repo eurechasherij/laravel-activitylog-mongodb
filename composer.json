@@ -1,5 +1,5 @@
 {
-    "name": "mostafamaklad/laravel-activitylog-mongodb",
+    "name": "eurechasherij/laravel-activitylog-mongodb-eloquent-causer",
     "description": "A very simple activity logger to monitor the users of your website or application",
     "keywords": [
         "spatie",
@@ -10,9 +10,9 @@
         "mongodb",
         "laravel-mongodb",
         "maklad",
-        "mostafamaklad"
+        "eurechasherij"
     ],
-    "homepage": "https://github.com/mostafamaklad/laravel-activitylog-mongodb",
+    "homepage": "https://github.com/eurechasherij/laravel-activitylog-mongodb",
     "license": "MIT",
     "authors": [
         {
@@ -37,6 +37,12 @@
             "name": "mostafamaklad",
             "email": "dev.mostafa.maklad@gmail.com",
             "homepage": "https://maklad.dev",
+            "role": "Developer"
+        },
+        {
+            "name": "eurechasherij",
+            "email": "eurechasherij@gmail.com",
+            "homepage": "https://github.com/eurechasherij",
             "role": "Developer"
         }
     ],

@@ -4,9 +4,12 @@ namespace Spatie\Activitylog\Models;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Jenssegers\Mongodb\Eloquent\Builder;
-use Jenssegers\Mongodb\Eloquent\Model;
-use Jenssegers\Mongodb\Relations\MorphTo;
+use Jenssegers\Mongodb\Eloquent\Builder as MongoBuilder;
+use Jenssegers\Mongodb\Eloquent\Model as MongoModel;
+use Jenssegers\Mongodb\Relations\MorphTo as MongoMorphTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Contracts\Activity as ActivityContract;
 
 class Activity extends Model implements ActivityContract
@@ -30,7 +33,7 @@ class Activity extends Model implements ActivityContract
         parent::__construct($attributes);
     }
 
-    public function subject(): MorphTo
+    public function subject(): MongoMorphTo
     {
         if (config('activitylog.subject_returns_soft_deleted_models')) {
             return $this->morphTo()->withTrashed();
@@ -63,7 +66,7 @@ class Activity extends Model implements ActivityContract
         return $this->changes();
     }
 
-    public function scopeInLog(Builder $query, ...$logNames): Builder
+    public function scopeInLog(MongoBuilder $query, ...$logNames): MongoBuilder
     {
         if (is_array($logNames[0])) {
             $logNames = $logNames[0];
@@ -79,7 +82,7 @@ class Activity extends Model implements ActivityContract
             ->where('causer_id', $causer->getKey());
     }
 
-    public function scopeForSubject(Builder $query, Model $subject): Builder
+    public function scopeForSubject(MongoBuilder $query, MongoModel $subject): MongoBuilder
     {
         return $query
             ->where('subject_type', $subject->getMorphClass())

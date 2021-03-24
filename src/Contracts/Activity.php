@@ -3,13 +3,16 @@
 namespace Spatie\Activitylog\Contracts;
 
 use Illuminate\Support\Collection;
-use Jenssegers\Mongodb\Eloquent\Builder;
-use Jenssegers\Mongodb\Eloquent\Model;
-use Jenssegers\Mongodb\Relations\MorphTo;
+use Jenssegers\Mongodb\Eloquent\Builder as MongoBuilder;
+use Jenssegers\Mongodb\Eloquent\Model as MongoModel;
+use Jenssegers\Mongodb\Relations\MorphTo as MongoMorphTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 interface Activity
 {
-    public function subject(): MorphTo;
+    public function subject(): MongoMorphTo;
 
     public function causer(): MorphTo;
 
@@ -17,9 +20,9 @@ interface Activity
 
     public function changes(): Collection;
 
-    public function scopeInLog(Builder $query, ...$logNames): Builder;
+    public function scopeInLog(MongoBuilder $query, ...$logNames): MongoBuilder;
 
     public function scopeCausedBy(Builder $query, Model $causer): Builder;
 
-    public function scopeForSubject(Builder $query, Model $subject): Builder;
+    public function scopeForSubject(MongoBuilder $query, MongoModel $subject): MongoBuilder;
 }
