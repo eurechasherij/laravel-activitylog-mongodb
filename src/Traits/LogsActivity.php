@@ -4,9 +4,10 @@ namespace Spatie\Activitylog\Traits;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Jenssegers\Mongodb\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 use Jenssegers\Mongodb\Relations\MorphMany;
+use Jenssegers\Mongodb\Eloquent\Model as MongoModel;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\ActivityLogger;
 use Spatie\Activitylog\ActivitylogServiceProvider;
 use Spatie\Activitylog\ActivityLogStatus;
