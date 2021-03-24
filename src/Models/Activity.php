@@ -33,7 +33,7 @@ class Activity extends MongoModel implements ActivityContract
         parent::__construct($attributes);
     }
 
-    public function subject(): MongoMorphTo
+    public function subject(): MorphTo
     {
         if (config('activitylog.subject_returns_soft_deleted_models')) {
             return $this->morphTo()->withTrashed();
@@ -82,7 +82,7 @@ class Activity extends MongoModel implements ActivityContract
             ->where('causer_id', $causer->getKey());
     }
 
-    public function scopeForSubject(MongoBuilder $query, MongoModel $subject): MongoBuilder
+    public function scopeForSubject(Builder $query, Model $subject): Builder
     {
         return $query
             ->where('subject_type', $subject->getMorphClass())

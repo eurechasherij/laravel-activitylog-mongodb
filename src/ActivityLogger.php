@@ -49,14 +49,14 @@ class ActivityLogger
         return $this;
     }
 
-    public function performedOn(MongoModel $model)
+    public function performedOn(Model $model)
     {
         $this->getActivity()->subject()->associate($model);
 
         return $this;
     }
 
-    public function on(MongoModel $model)
+    public function on(Model $model)
     {
         return $this->performedOn($model);
     }

@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 interface Activity
 {
-    public function subject(): MongoMorphTo;
+    public function subject(): MorphTo;
 
     public function causer(): MorphTo;
 
@@ -24,5 +24,5 @@ interface Activity
 
     public function scopeCausedBy(Builder $query, Model $causer): Builder;
 
-    public function scopeForSubject(MongoBuilder $query, MongoModel $subject): MongoBuilder;
+    public function scopeForSubject(Builder $query, Model $subject): Builder;
 }
