@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Contracts\Activity as ActivityContract;
 
-class Activity extends Model implements ActivityContract
+class Activity extends MongoModel implements ActivityContract
 {
     public $guarded = [];
 
