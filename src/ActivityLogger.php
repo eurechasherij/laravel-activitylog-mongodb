@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
+use Jenssegers\Mongodb\Eloquent\Model as MongoModel;
 use Jenssegers\Mongodb\Eloquent\Model;
 use Spatie\Activitylog\Contracts\Activity as ActivityContract;
 use Spatie\Activitylog\Exceptions\CouldNotLogActivity;
@@ -48,14 +49,14 @@ class ActivityLogger
         return $this;
     }
 
-    public function performedOn(Model $model)
+    public function performedOn(MongoModel $model)
     {
         $this->getActivity()->subject()->associate($model);
 
         return $this;
     }
 
-    public function on(Model $model)
+    public function on(MongoModel $model)
     {
         return $this->performedOn($model);
     }
